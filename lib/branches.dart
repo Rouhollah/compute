@@ -30,6 +30,13 @@ class _BranchesState extends State<Branches> {
         ),
         elevation: 0,
       ),
+      body: GoogleMap(
+        onMapCreated: onComplete,
+        initialCameraPosition: CameraPosition(
+          target: LatLng(36.262602,59.609900),
+          zoom: 5
+          )
+          ),
     );
   }
 }

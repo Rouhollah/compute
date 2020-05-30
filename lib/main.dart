@@ -5,6 +5,7 @@ import 'package:compute/product.dart';
 import 'package:flutter/material.dart';
 import 'shopBottomNavigator.dart';
 import 'package:http/http.dart' as http;
+import 'branches.dart';
 
 void main() => runApp(MainMaterial());
 
@@ -46,10 +47,15 @@ class _StorState extends State<Stor> {
           color: Colors.black45,
         ),
         actions: <Widget>[
-          Icon(
-            Icons.map,
-            color: Colors.black45,
-          )
+          IconButton(
+              icon: Icon(
+                Icons.map,
+                color: Colors.black45,
+              ),
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => Branches()));
+              }),
         ],
         elevation: 0,
       ),
@@ -105,10 +111,8 @@ class _StorState extends State<Stor> {
       elevation: 4,
       child: InkWell(
         onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(
-            builder:(context) =>Description(product)
-                        )
-            );
+          Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => Description(product)));
         },
         child: Center(
           child: Column(
