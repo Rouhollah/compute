@@ -5,7 +5,7 @@ import 'package:compute/product.dart';
 import 'package:flutter/material.dart';
 import 'shopBottomNavigator.dart';
 import 'package:http/http.dart' as http;
-import 'branches.dart';
+import 'package:compute/branchesPage.dart';
 
 void main() => runApp(MainMaterial());
 
@@ -54,7 +54,7 @@ class _StorState extends State<Stor> {
               ),
               onPressed: () {
                 Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Branches()));
+                    .push(MaterialPageRoute(builder: (context) => BranchesPage()));
               }),
         ],
         elevation: 0,
@@ -82,13 +82,10 @@ class _StorState extends State<Stor> {
   void fetchItems() async {
     var url = "http://welearnacademy.ir/flutter/products_list.json";
     http.Response response = await http.get(url);
-    //print('Response status: ${response.statusCode}');
-    //print('Response body: ${response.body}');
     var utf8Json = utf8.decode(response.bodyBytes);
     setState(() {
       var productJson = json.decode(utf8Json);
       for (var item in productJson) {
-        print(item);
         Product product = new Product();
         product.id = item['id'];
         product.off = item['off'];
