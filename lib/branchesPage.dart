@@ -12,7 +12,7 @@ class BranchesPage extends StatefulWidget {
 }
 
 class _BranchesPageState extends State<BranchesPage> {
-  Set<Marker> branchesList;
+  Set<Marker> branchesList =<Marker>{} ;
   Completer<GoogleMapController> _controller = Completer();
   void onComplete(GoogleMapController controller) {
     this._controller.complete();
@@ -53,11 +53,10 @@ class _BranchesPageState extends State<BranchesPage> {
     Response response = await get(url);
     setState(() {
       var jasonPoints = json.decode(utf8.decode(response.bodyBytes));
-      print(jasonPoints);
       for (var point in jasonPoints) {
+        print(point);
         Branch b = new Branch();
-        print(point['id']);
-        b.id = point[0]['id'];
+        b.id = point['id'];
         b.lat = point['lat'];
         b.lng = point['lng'];
         b.shopName = point['shop_name'];
