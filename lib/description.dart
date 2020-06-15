@@ -1,3 +1,4 @@
+import 'package:compute/shoppingData.dart';
 import 'package:flutter/material.dart';
 import 'product.dart';
 
@@ -57,18 +58,22 @@ class Description extends StatelessWidget {
                   borderRadius: BorderRadius.circular(25),
                   color: Colors.green,
                 ),
-                child: Center(
-                 child: Text('افزودن به سبد خرید',
-                  style:TextStyle(
-                    color:Colors.white,
-                    fontSize: 14,
-                    fontFamily: 'IranSans'
-                  ))
+                child: GestureDetector(
+                  onTap: () {
+                    ShoppingData.getInstance().basketItems.add(_product);
+                    print(ShoppingData.getInstance().basketItems.length);
+                  },
+                  child: Center(
+                      child: Text('افزودن به سبد خرید',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                              fontFamily: 'IranSans'))),
                 ),
               ),
               alignment: Alignment.bottomCenter,
             ),
-          )
+          ),
         ],
       ),
     );

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:compute/description.dart';
 import 'package:compute/product.dart';
+import 'package:compute/shoppingBasket.dart';
 import 'package:flutter/material.dart';
 import 'shopBottomNavigator.dart';
 import 'package:http/http.dart' as http;
@@ -55,6 +56,15 @@ class _StorState extends State<Stor> {
               onPressed: () {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) => BranchesPage()));
+              }),
+              IconButton(
+              icon: Icon(
+                Icons.shopping_basket,
+                color: Colors.black45,
+              ),
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => ShoppingBasket()));
               }),
         ],
         elevation: 0,
