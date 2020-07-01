@@ -5,5 +5,4 @@ class Product {
   String imageUrl;
   bool off;
   String description;
-  
 }

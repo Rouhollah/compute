@@ -61,7 +61,7 @@ class Description extends StatelessWidget {
                 child: GestureDetector(
                   onTap: () {
                     ShoppingData.getInstance().basketItems.add(_product);
-                    print(ShoppingData.getInstance().basketItems.length);
+                    print(ShoppingData.getInstance().basketItems);
                   },
                   child: Center(
                       child: Text('افزودن به سبد خرید',
