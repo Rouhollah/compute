@@ -54,10 +54,10 @@ class _StorState extends State<Stor> {
                 color: Colors.black45,
               ),
               onPressed: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => BranchesPage()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => BranchesPage()));
               }),
-              IconButton(
+          IconButton(
               icon: Icon(
                 Icons.shopping_basket,
                 color: Colors.black45,
@@ -65,29 +65,19 @@ class _StorState extends State<Stor> {
               onPressed: () {
                 // Navigator.of(context)
                 //     .push(MaterialPageRoute(builder: (context) => ShoppingBasket()));
-                // به جای استفاده از 
+                // به جای استفاده از
                 //MaterialPageRoute
                 // می توان از انیمیشن های دیگری استفاده کرد
                 Navigator.of(context).push(PageRouteBuilder(
-                  transitionDuration: Duration(seconds: 2),
-                   pageBuilder: (BuildContext context,Animation<double> animation , Animation<double> secondAnimation){
-return ShoppingBasket();
-                },
-                TransitionBuilder(BuildContext context,Animation<double> animation , Animation<double> secondAnimation,Widget widget){
-                  return SlideTransition(child: widget,
-                  position: Tween<Offset>(
-                    // حرکت ویجت ها از موقعیت 0و 0 هست گوشه سمت چپ بالا  تا گوشه سمت راست پایین که 1و 1 است 
-                    begin: Offset(1,0),// از راست بالا شروع کن
-                    // یک حرکت راست به چپ
-                    end: Offset(0,0)// چپ بالا تمام کن
-                  ).animate(CurvedAnimation(
-                    parent: animation,
-                    curve: Curves.decelerate
-                  )));
-                })
-
-                
+                   transitionDuration: Duration(seconds: 2),
+                  pageBuilder: (BuildContext context,
+                      Animation<double> animation,
+                      Animation<double> secondAnimation) {
+                    return ShoppingBasket();
+                  },
+                )
                 );
+              })
         ],
         elevation: 0,
       ),
