@@ -2,14 +2,22 @@
 import 'product.dart';
 import 'package:flutter/material.dart';
 
+typedef OnRemovePressed(int index);
+
 class ShoppingItem extends StatefulWidget {
   final Product _product;
-  ShoppingItem(this._product);
+  final int _index;
+  final OnRemovePressed _onRemovePressed;
+  ShoppingItem(
+      this._product, this._onRemovePressed, this._index); //, this._count);
+
   @override
   _ShoppingItemState createState() => _ShoppingItemState();
 }
 
 class _ShoppingItemState extends State<ShoppingItem> {
+  int count = 0;
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -46,16 +54,22 @@ class _ShoppingItemState extends State<ShoppingItem> {
                     textDirection: TextDirection.rtl,
                     children: <Widget>[
                       GestureDetector(
+                          onTap: () {
+                            increment();
+                          },
                           child: Icon(
-                        Icons.chevron_right,
-                        size: 35,
-                      )),
-                      Text("0"),
+                            Icons.chevron_right,
+                            size: 35,
+                          )),
+                      Text(count.toString()),
                       GestureDetector(
+                          onTap: () {
+                            decrement();
+                          },
                           child: Icon(
-                        Icons.chevron_left,
-                        size: 35,
-                      )),
+                            Icons.chevron_left,
+                            size: 35,
+                          )),
                     ],
                   ),
                 )
@@ -65,13 +79,22 @@ class _ShoppingItemState extends State<ShoppingItem> {
                 child: Align(
               alignment: Alignment.centerLeft,
               child: Padding(
-
                 padding: EdgeInsets.only(left: 20),
-                              child: Column(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Icon(Icons.delete),
+                    GestureDetector(
+                      child: Icon(Icons.delete),
+                      onTap: () {
+                        widget._onRemovePressed(widget._index);
+                        // ShoppingData.getInstance()
+                        //     .basketItems
+                        //     .removeAt(widget._index);
+                        //.basketItems
+                        //.remove(widget._product);
+                      },
+                    ),
                     Text(widget._product.price)
                   ],
                 ),
@@ -81,5 +104,21 @@ class _ShoppingItemState extends State<ShoppingItem> {
         ),
       ),
     );
+  }
+
+  void increment() {
+    setState(() {
+      count++;
+    });
+  }
+
+  void decrement() {
+    setState(() {
+      if (count == 0) {
+        return;
+      } else {
+        count--;
+      }
+    });
   }
 }

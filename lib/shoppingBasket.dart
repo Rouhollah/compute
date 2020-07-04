@@ -3,10 +3,8 @@ import 'package:compute/shoppingItem.dart';
 import 'package:flutter/material.dart';
 
 class ShoppingBasket extends StatefulWidget {
-
   @override
   _ShoppingBasketState createState() => _ShoppingBasketState();
-
 }
 
 class _ShoppingBasketState extends State<ShoppingBasket> {
@@ -15,7 +13,7 @@ class _ShoppingBasketState extends State<ShoppingBasket> {
     return Scaffold(
         appBar: AppBar(
             title: Text(
-              "فروشگاه",
+              "سبد خرید",
               style: TextStyle(color: Colors.black45, fontFamily: "IranSans"),
             ),
             centerTitle: true,
@@ -29,15 +27,52 @@ class _ShoppingBasketState extends State<ShoppingBasket> {
   }
 
   Widget basketUi() {
-    return ListView.builder(
-        itemCount: ShoppingData.getInstance().basketItems.length,
-        itemBuilder: (context, position) {
-          return GestureDetector(
-            child: Padding(
-              child: ShoppingItem(ShoppingData.getInstance().basketItems[position]),
-              padding: EdgeInsets.all(5.0),
-            ),
-          );
-        });
+    return Stack(
+      children: <Widget>[
+        Padding(
+          padding: EdgeInsets.only(bottom:70 ),
+                  child: ListView.builder(
+              itemCount: ShoppingData.getInstance().basketItems.length,
+              itemBuilder: (context, position) {
+                return GestureDetector(
+                  child: Padding(
+                    child: ShoppingItem(
+                        ShoppingData.getInstance().basketItems[position],
+                        removeItem,
+                        position),
+                    padding: EdgeInsets.all(5.0),
+                  ),
+                );
+              }),
+        ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Material(
+            color: Colors.red,
+            child: InkWell(
+                onTap: () {},
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 70,
+                  child: Center(
+                    child: Text(
+                      'پرداخت',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontFamily: 'IranSans'),
+                    ),
+                  ),
+                )),
+          ),
+        ),
+      ],
+    );
+  }
+
+  void removeItem(int index) {
+    setState(() {
+      ShoppingData.getInstance().basketItems.removeAt(index);
+    });
   }
 }
