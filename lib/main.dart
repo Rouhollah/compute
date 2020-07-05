@@ -69,14 +69,13 @@ class _StorState extends State<Stor> {
                 //MaterialPageRoute
                 // می توان از انیمیشن های دیگری استفاده کرد
                 Navigator.of(context).push(PageRouteBuilder(
-                   transitionDuration: Duration(seconds: 2),
+                  transitionDuration: Duration(seconds: 2),
                   pageBuilder: (BuildContext context,
                       Animation<double> animation,
                       Animation<double> secondAnimation) {
                     return ShoppingBasket();
                   },
-                )
-                );
+                ));
               })
         ],
         elevation: 0,
@@ -85,7 +84,7 @@ class _StorState extends State<Stor> {
         padding: const EdgeInsets.all(8.0),
         child: GridView.count(
           crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
+          mainAxisSpacing: 2,
           crossAxisCount: 2,
           children: List.generate(productList.length, (int position) {
             return generatorItem(productList[position], context);
@@ -138,8 +137,8 @@ class _StorState extends State<Stor> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
-                  height: 130,
-                  width: 130,
+                  height: 100,
+                  width: 100,
                   child: Image.network(product.imageUrl)),
               Text(
                 product.productName,
