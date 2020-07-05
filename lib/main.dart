@@ -68,15 +68,7 @@ class _StorState extends State<Stor> {
                 // به جای استفاده از
                 //MaterialPageRoute
                 // می توان از انیمیشن های دیگری استفاده کرد
-                Navigator.of(context).push(PageRouteBuilder(
-                   transitionDuration: Duration(seconds: 2),
-                  pageBuilder: (BuildContext context,
-                      Animation<double> animation,
-                      Animation<double> secondAnimation) {
-                    return ShoppingBasket();
-                  },
-                )
-                );
+                Navigator.of(context).push(_createRoute());
               })
         ],
         elevation: 0,
@@ -155,4 +147,29 @@ class _StorState extends State<Stor> {
       ),
     );
   }
+}
+
+// Route _createRoute2() {
+//   return PageRouteBuilder(
+//     pageBuilder: (context, animation, secondaryAnimation) => ShoppingBasket(),
+//     transitionsBuilder: (context, animation, secondaryAnimation, child) {
+//       return child;
+//     },
+//   );
+// }
+
+Route _createRoute() {
+  return PageRouteBuilder(
+      transitionDuration: Duration(seconds: 2),
+      pageBuilder: (BuildContext context, Animation<double> animation,
+          Animation<double> secondAnimation) {
+        return ShoppingBasket();
+      },
+      transitionsBuilder: (BuildContext context, Animation<double> animation,
+          Animation<double> secondAnimation, Widget widget) {
+        return SlideTransition(
+            child: widget,
+            position: Tween<Offset>(begin: Offset(1, 0), end: Offset(0, 0))
+                .animate(animation));
+      });
 }
