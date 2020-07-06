@@ -159,6 +159,10 @@ class _StorState extends State<Stor> {
 // }
 
 Route _createRoute() {
+  var begin = Offset(0.0, 1.0);
+  var end = Offset.zero;
+  var curve = Curves.ease;
+  var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
   return PageRouteBuilder(
       transitionDuration: Duration(seconds: 2),
       pageBuilder: (BuildContext context, Animation<double> animation,
@@ -168,8 +172,10 @@ Route _createRoute() {
       transitionsBuilder: (BuildContext context, Animation<double> animation,
           Animation<double> secondAnimation, Widget widget) {
         return SlideTransition(
-            child: widget,
-            position: Tween<Offset>(begin: Offset(1, 0), end: Offset(0, 0))
-                .animate(animation));
+          child: widget,
+          // position: Tween<Offset>(begin: Offset(1, 0), end: Offset(0, 0))
+          //     .animate(animation)
+          position: animation.drive(tween),
+        );
       });
 }
