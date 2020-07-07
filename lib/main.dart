@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:compute/description.dart';
+import 'package:compute/login.dart';
 import 'package:compute/product.dart';
 import 'package:compute/shoppingBasket.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ class MainMaterial extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Stor(),
+      home: Login(),
     );
   }
 }
