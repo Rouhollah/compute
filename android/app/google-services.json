@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "418384975284",
+    "firebase_url": "https://compute-538a7.firebaseio.com",
+    "project_id": "compute-538a7",
+    "storage_bucket": "compute-538a7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:418384975284:android:c7f6dc603c8bdcc58e0ee1",
+        "android_client_info": {
+          "package_name": "com.example.compute"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "418384975284-8ha5rv0i6hgggn1pt4hggmceir47ij6r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNX7774N3zWhHgSsXcjr9cLAUaHZDBgVE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "418384975284-8ha5rv0i6hgggn1pt4hggmceir47ij6r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
